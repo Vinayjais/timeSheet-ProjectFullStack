@@ -14,36 +14,37 @@
       <div>
 
            <h3> Submit Your Today Work To Head</h3>
-         <form action="/submitwork" method="post" onsubmit="submitwork()">
+         <form action="/submitwork" method="post" onsubmit="submitwork(event)">
             <label for="projectName">Project Name</label>
-            <input type="text" name="projectName" id="projectName">
+            <input type="text" name="projectName" id="projectName" required>
             <label for="date">Date</label>
-            <input type="date" name="date" id="date">
+            <input type="date" name="date" id="date" required>
             <label for="dec">Work</label>
-            <input type="text" name="Work" id="work">
+            <input type="text" name="Work" id="work" required>
 
             <button type="submit"> submit</button>
          </form>
       </div>
 
-      <div id="works">
-         <h3> Recenty Submitted works</h3>
-       <ul id="worktable">
-           <li><span>abc </span> <span>12/2/2024</span> <span>bhhvvv</span></li>
-       </ul>
+  
+       </p>
       </div>
 
       <script>
           async  function submitwork() {
+        
               const projectName = document.getElementById('projectName').value;
               const date = document.getElementById('date').value;
               const work = document.getElementById('work').value;
               const token =  localStorage.getItem('token');
-               submittedWork(projectName,date,work);
+      
+                           
+   
    
          await axios.post('http://localhost:4000/submitwork',{projectName,date,work},{headers:{"Authorization":token}})
          .then((result) => {
-            console.log(result)
+         window.location.replace('/workSubmitted');
+            
          }).catch((err) => {
               console.log(err)
          });
@@ -51,22 +52,7 @@
 
            }
             
-           function  submittedWork(project,date,work){
-              
-    const list = document.getElementById('worktable');
-
-const li = document.createElement('li');
-li.appendChild(document.createTextNode(project));
-li.appendChild(document.createTextNode(" "));
-
-li.appendChild(document.createTextNode(date));
-li.appendChild(document.createTextNode(" "));
-
-li.appendChild(document.createTextNode(work));
-
-
-
-           }
+         
       </script>
  </body>
  </html>

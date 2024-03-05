@@ -10,6 +10,9 @@ exports.getDashBoard =( req,res,next) =>{
 
 
 }
+exports.workSubmittedSuccess = (req,res,next)=>{
+    res.sendFile(path.join(__dirname , '../' ,'Public', 'views' , 'succes.html')); 
+}
 
 exports.submitwork = ( req,res, next) =>{
      
@@ -27,7 +30,8 @@ exports.submitwork = ( req,res, next) =>{
 
       })
       .then((result)=>{
-        res.status(200).send(" Work Submitted");
+        res.send(`Work Submitted for Project name ${projectName} `)
+        
       })
       .catch((err)=>{
           throw new Error(err);
@@ -66,11 +70,12 @@ exports.submitRate = async (req, res,next) =>{
          result.rating =rate;
 
           result.save();
-          console.log(result);
+        res.send(`Rating Submitted for Project Id ${ projectId}`)
     })
     .catch((err)=>{
         console.log('submint rate err');
         throw new Error(err);
+
     })
     
     

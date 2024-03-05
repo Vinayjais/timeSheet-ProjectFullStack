@@ -17,9 +17,9 @@
          <form action="/submit-rate" method="post" onsubmit="giveRating()">
             
             <label for="project">Project Id :</label>
-            <input type="number" name="projectId" id="projectId">
+            <input type="number" name="projectId" id="projectId" required>
             <label for="rate">Rating :</label>
-            <input type="number" name="rating" id="rating">
+            <input type="number" name="rating" id="rating" required>
 
             <button type="submit"> Submit</button>
 
@@ -74,6 +74,8 @@ function addToWork (data){
     li.appendChild(document.createTextNode(" "));
 
     li.appendChild(document.createTextNode(data.todayWork));
+    li.appendChild(document.createTextNode(" "));
+    li.appendChild(document.createTextNode(data.rating || "No Ratings"));
 
     li.addEventListener('click', () =>{
          
@@ -96,7 +98,6 @@ function addToWork (data){
 
       await axios.post('http://localhost:4000/submit-rate',{ rating,projectId})
       .then((result) =>{
-         
       })
       .catch((err)=>{
          console.log(err);

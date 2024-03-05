@@ -14,6 +14,7 @@ router.post('/submitwork', auth.authentication, dashboard.submitwork);
 router.get('/get-data', dashboard.getData );
 router.get('/admin', dashboard.getAdminpage);
 router.post('/submit-rate', dashboard.submitRate);
+router.get('/workSubmitted',dashboard.workSubmittedSuccess)
 
 
 module.exports = router;

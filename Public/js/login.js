@@ -10,6 +10,7 @@ async function GetResponse(){
           console.log('in response')
            localStorage.setItem('token', response.data.token);
            window.location.replace('/dashboard');
+           
   })
   .catch((err) =>{
     console.log(err)
