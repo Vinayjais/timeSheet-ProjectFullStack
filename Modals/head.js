@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../utilities/database');
-const { head } = require('../Router/login');
+
 
 const heads = sequelize.define('heads',{
      id:{
@@ -22,4 +22,4 @@ const heads = sequelize.define('heads',{
 
 });
 
-module.exports = head;
+module.exports = heads;

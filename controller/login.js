@@ -2,7 +2,7 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const User = require('../Modals/user');
 const jwt = require('jsonwebtoken');
-const heads = require('../Modals/head');
+const Heads = require('../Modals/head');
 exports.getLogin = (req, res , next) =>{
 
      res.sendFile(path.join(__dirname , '../' ,'Public', 'views' , 'login.html'));
@@ -18,12 +18,29 @@ exports.adminPage =( req,res, next) =>{
 
 }
 
-exports.adminLogin= (req,res,next)=>{
+exports.adminLogin=  async (req,res,next)=>{
       const email = req.body.email;
       const password = req.body.password;
 
-      console.log(email)
-      console.log(password)
+       console.log(email)
+
+
+      
+     await  Heads.findOne({where:{ email: email}})
+     .then((result)=>{
+         if(result.password === password){
+            res.status(200).send({msg :  true })
+         }
+         else{
+            res.send({msg : false})
+         }
+     } )
+     .catch((err)=>{
+        console.log(err)
+        // res.send({msg: "Entered Wrong Email !!"});
+     })
+
+     
 }
 
 exports.postUserData =(req,res,next)=>{

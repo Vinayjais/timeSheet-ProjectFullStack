@@ -56,7 +56,7 @@
           <br>
            <p>New User</p>
            <button  class="btn btn-primary"><a id="lbtn" href="/signup">Sign Up</a></button></p>
-           <a href="/adminpage">Admin Login</a>
+            <button onclick="getAdminPage()">Admin Login</button>
 
           
           </div>
@@ -64,6 +64,9 @@
        
      <script>
 
+   function getAdminPage(){
+       window.location.replace('/adminpage');
+   }
         
 async function GetResponse(){
     const email  = document.getElementById('email').value;
