@@ -2,6 +2,7 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const User = require('../Modals/user');
 const jwt = require('jsonwebtoken');
+const heads = require('../Modals/head');
 exports.getLogin = (req, res , next) =>{
 
      res.sendFile(path.join(__dirname , '../' ,'Public', 'views' , 'login.html'));
@@ -12,6 +13,18 @@ exports.GetSignUp = ( req,res,next) =>{
 
 }
 
+exports.adminPage =( req,res, next) =>{
+    res.sendFile(path.join(__dirname , '../' ,'Public', 'views' , 'loginAdmin.html'));
+
+}
+
+exports.adminLogin= (req,res,next)=>{
+      const email = req.body.email;
+      const password = req.body.password;
+
+      console.log(email)
+      console.log(password)
+}
 
 exports.postUserData =(req,res,next)=>{
     const user = {

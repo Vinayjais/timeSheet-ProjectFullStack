@@ -15,6 +15,8 @@ router.get('/get-data', dashboard.getData );
 router.get('/admin', dashboard.getAdminpage);
 router.post('/submit-rate', dashboard.submitRate);
 router.get('/workSubmitted',dashboard.workSubmittedSuccess)
+router.get('/adminpage',login.adminPage)
+router.post('/admin-login',login.adminLogin)
 
 
 module.exports = router;

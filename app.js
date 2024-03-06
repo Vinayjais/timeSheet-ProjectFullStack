@@ -5,6 +5,7 @@ const loginrouter = require('./Router/login');
 const sequelize = require('./utilities/database');
 const User= require('./Modals/user')
 const work = require('./Modals/work');
+const heads = require('./Modals/head');
 
 
 const app =  express();
